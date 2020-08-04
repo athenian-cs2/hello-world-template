@@ -1,5 +1,6 @@
 # Hello World Assignment Template
 
+For our first Java program, we're going to write a Hello, World program.
 
 Add code to [MyMain.java](src/main/java/MyClass.java) to do the desired thing.
 
