@@ -8,14 +8,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MyTests {
 
-    @Test
-    public void testDirectGreeting() {
-        MyClass chinese = new MyClass("Ni Hao!");
-        MyClass spanish = new MyClass("Hola!");
+    public static void assertMultipleEquals(String[] expected, String actual, String message) {
+        for (String str: expected) {
+            if (str.equals(actual)) {
+                assertEquals(str, actual, message);
+                return;
+            }
+        }
 
-        // assert statements
-        assertEquals("Ni Hao!", chinese.getGreeting());
-        assertEquals("Hola!", spanish.getGreeting());
+        assertEquals(expected[0], actual, message);
     }
 
     @Test
@@ -28,7 +29,12 @@ public class MyTests {
             MyMain.main(null);
 
             // assert statements
-            assertEquals("Hello World!\n", bos.toString());
+            String str = bos.toString().trim();
+
+            assertMultipleEquals(new String[]{"Hello world!", "Hello, world!"}, str, "Output should be \"Hello world!\" or \"Hello, world!\"");
+
+            // Boolean bool = str.equals("Hello world!") || str.equals("Hello, world!");
+            // assertTrue(bool, "Output should be \"Hello world!\" or \"Hello, world!\"");
 
             // undo the binding in System
             System.setOut(originalOut);
