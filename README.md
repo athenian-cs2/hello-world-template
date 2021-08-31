@@ -2,7 +2,7 @@
 
 For our first Java program, we're going to write a Hello, World program.
 
-Add code to [MyMain.java](src/main/java/MyClass.java) to do the desired thing.
+Add code to [MyMain.java](src/main/java/MyMain.java) to do the desired thing.
 
 ## Run your code with:
 ```shell script
