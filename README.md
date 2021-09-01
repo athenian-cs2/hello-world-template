@@ -1,4 +1,4 @@
-# Hello World Assignment
+# Hello World
 
 For our first Java program, we're going to write a Hello, World program.
 
