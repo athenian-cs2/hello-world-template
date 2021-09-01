@@ -1,4 +1,4 @@
-# Hello World Assignment Template
+# Hello World Assignment
 
 For our first Java program, we're going to write a Hello, World program.
 
