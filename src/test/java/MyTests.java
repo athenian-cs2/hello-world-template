@@ -1,43 +1,45 @@
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 public class MyTests {
 
-    public static void assertMultipleEquals(String[] expected, String actual, String message) {
-        for (String str: expected) {
-            if (str.equals(actual)) {
-                assertEquals(str, actual, message);
-                return;
-            }
-        }
-
-        assertEquals(expected[0], actual, message);
+  public static void assertMultipleEquals(String[] expected, String actual, String message) {
+    for (String str : expected) {
+      if (str.equals(actual)) {
+        assertEquals(str, actual, message);
+        return;
+      }
     }
 
-    @Test
-    public void testStdoutGreeting() throws IOException {
-        try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
-            PrintStream originalOut = System.out;
-            System.setOut(new PrintStream(bos));
+    assertEquals(expected[0], actual, message);
+  }
 
-            // Call main()
-            MyMain.main(null);
+  @Test
+  public void testStdoutGreeting() throws IOException {
+    try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+      PrintStream originalOut = System.out;
+      System.setOut(new PrintStream(bos));
 
-            // assert statements
-            String str = bos.toString().trim();
+      // Call main()
+      MyMain.main(null);
 
-            assertMultipleEquals(new String[]{"Hello world!", "Hello, world!"}, str, "Output should be \"Hello world!\" or \"Hello, world!\"");
+      // assert statements
+      String str = bos.toString().trim();
 
-            // Boolean bool = str.equals("Hello world!") || str.equals("Hello, world!");
-            // assertTrue(bool, "Output should be \"Hello world!\" or \"Hello, world!\"");
+      assertMultipleEquals(
+          new String[] {"Hello world!", "Hello, world!"},
+          str,
+          "Output should be \"Hello world!\" or \"Hello, world!\"");
 
-            // undo the binding in System
-            System.setOut(originalOut);
-        }
+      // Boolean bool = str.equals("Hello world!") || str.equals("Hello, world!");
+      // assertTrue(bool, "Output should be \"Hello world!\" or \"Hello, world!\"");
+
+      // undo the binding in System
+      System.setOut(originalOut);
     }
+  }
 }
